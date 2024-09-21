@@ -1,19 +1,21 @@
 # depslib dependency file v1.0
-1726928801 source:c:\users\lordofgames\desktop\objektinis1\objektinis1\main.cpp
+1726941196 source:c:\users\lordofgames\desktop\objektinis1\objektinis1\main.cpp
 	"lib.h"
 	"stud.h"
 
-1726928044 c:\users\lordofgames\desktop\objektinis1\objektinis1\lib.h
+1726941196 c:\users\lordofgames\desktop\objektinis1\objektinis1\lib.h
 	<iostream>
 	<string>
 	<vector>
 	<iomanip>
 	<algorithm>
+	<cstdlib>
+	<ctime>
 
 1726928801 c:\users\lordofgames\desktop\objektinis1\objektinis1\stud.h
 	"lib.h"
 
-1726910153 source:c:\users\lordofgames\desktop\objektinis1\objektinis1\stud.cpp
+1726942020 source:c:\users\lordofgames\desktop\objektinis1\objektinis1\stud.cpp
 	"stud.h"
 	"lib.h"
 

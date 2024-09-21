@@ -6,6 +6,8 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 using std::endl;
 using std::cout;

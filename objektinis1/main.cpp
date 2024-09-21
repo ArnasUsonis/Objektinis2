@@ -4,6 +4,7 @@
 int main() {
     vector<stud> vec1;
     stud temp;
+    srand(time(0));
 
     cout << "How many students do you have? ";
     int n;
@@ -17,9 +18,9 @@ int main() {
         mediana(temp);
         vec1.push_back(temp);
         val(temp);
-    }
+        }
 
-    // Prompt for using median or not
+
     cout << "Do you want to use median for the final grades? (y/n): ";
     char ats;
     cin >> ats;

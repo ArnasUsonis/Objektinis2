@@ -3,10 +3,23 @@
 
 void ived(stud &lok)
 {
-    cout<<"input name, surname and egzam score:";
-    cin>>lok.vardas>>lok.pavarde>>lok.egz;
+    cout<<"input name and surname:";
+    cin>>lok.vardas>>lok.pavarde;
 
-    cout << "enter homework grades (enter -1 to end it):"<<endl;
+    cout << "do you want to randomize exam and homework grades?(y/n)"<<endl;
+    char r;
+    cin>>r;
+
+    if(r=='y' || r=='Y'){
+        int kiekisNd = rand() % 5 + 1; // nd kiekis (1-5)
+        for (int i = 0; i < kiekisNd; i++) {
+            double namuDarbas = rand() % 10 + 1; // nd pazymys (1-10)
+            lok.nd.push_back(namuDarbas);
+        }
+        lok.egz = rand() % 10 + 1; // egz (1-10)
+
+    }else if(r=='n'|| r=='N'){
+        cout << "enter homework grades (enter -1 to end it):"<<endl;
     double balas;
     while(true){
         cin >> balas;
@@ -16,7 +29,9 @@ void ived(stud &lok)
         lok.nd.push_back(balas);
     }
 
-
+    cout << "enter exam score: ";
+    cin >> lok.egz;
+    }
 }
 
 void outputvid(stud lok)
@@ -50,14 +65,14 @@ double vidurkis(stud &lok){
     return lok.vid;
 }
 
-double mediana(stud &lok)
-{
+double mediana(stud &lok){
     sort(lok.nd.begin(), lok.nd.end());
 
     if (lok.nd.size() % 2 == 0){
-            int middleIndex = (lok.nd.size()/2 + lok.nd.size()/2 - 1)/2;
-            int vid = lok.nd[middleIndex];
-        lok.med = 0.4*vid+0.6*lok.egz;
+            int middleIndex1 = lok.nd.size() / 2 - 1;
+            int middleIndex2 = lok.nd.size() / 2;
+            double medianValue = (lok.nd[middleIndex1] + lok.nd[middleIndex2]) / 2.0;
+        lok.med = 0.4*medianValue+0.6*lok.egz;
 
         return lok.med;
     }else{
@@ -68,3 +83,5 @@ double mediana(stud &lok)
             return lok.med;
     }
 }
+
+
