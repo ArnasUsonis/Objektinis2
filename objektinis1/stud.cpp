@@ -6,16 +6,17 @@ void ived(stud &lok)
     cout<<"input name, surname and egzam score:";
     cin>>lok.vardas>>lok.pavarde>>lok.egz;
 
-    int numhw;
-    cout << "How many homework scores? ";
-    cin >> numhw;
+    cout << "enter homework grades (enter -1 to end it):"<<endl;
     double balas;
-
-    for (int i = 1; i <= numhw; i++) {
-        cout << "Input"<< i << "homework score: ";
+    while(true){
         cin >> balas;
+        if(balas == -1){
+            break;
+        }
         lok.nd.push_back(balas);
     }
+
+
 }
 
 void outputvid(stud lok)
