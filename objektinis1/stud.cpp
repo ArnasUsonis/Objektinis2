@@ -18,9 +18,14 @@ void ived(stud &lok)
     }
 }
 
-void output(stud lok)
+void outputvid(stud lok)
 {
     cout<< setw(15) <<left<< lok.vardas << setw(10)<<left<< lok.pavarde << setw(3) <<right<< fixed << setprecision(2) << lok.vid <<endl;
+}
+
+void outputmed(stud lok)
+{
+    cout<< setw(15) <<left<< lok.vardas << setw(10)<<left<< lok.pavarde << setw(3) <<right<< fixed << setprecision(2) << lok.med <<endl;
 }
 
 void val(stud &lok){
@@ -42,4 +47,23 @@ double vidurkis(stud &lok){
     lok.vid = 0.4 * avghomework + 0.6 * lok.egz;
 
     return lok.vid;
+}
+
+double mediana(stud &lok)
+{
+    sort(lok.nd.begin(), lok.nd.end());
+
+    if (lok.nd.size() % 2 == 0){
+            int middleIndex = (lok.nd.size()/2 + lok.nd.size()/2 - 1)/2;
+            int vid = lok.nd[middleIndex];
+        lok.med = 0.4*vid+0.6*lok.egz;
+
+        return lok.med;
+    }else{
+        int middleIndex = lok.nd.size() / 2;
+            int vid = lok.nd[middleIndex];
+            lok.med = 0.4*vid+0.6*lok.egz;
+
+            return lok.med;
+    }
 }

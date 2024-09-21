@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 
 using std::endl;
 using std::cout;
@@ -16,5 +17,6 @@ using std::setprecision;
 using std::fixed;
 using std::string;
 using std::vector;
+using std::sort;
 
 #endif // LIB_H_INCLUDED

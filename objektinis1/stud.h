@@ -10,7 +10,10 @@ struct stud{
 };
 
 void ived(stud &lok);
-void output(stud lok);
+void outputvid(stud lok);
 void val(stud &lok);
 double vidurkis(stud &lok);
+void outputmed(stud lok);
+double mediana(stud &lok);
+
 #endif // STUD_H_INCLUDED
