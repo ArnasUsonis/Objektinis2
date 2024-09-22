@@ -6,7 +6,19 @@ int main() {
     stud temp;
     srand(time(0));
 
-    cout << "How many students do you have? ";
+    cout << "Do you want to read the file kursiokai.txt?(y/n)";
+    char t;
+    cin >>t;
+
+    if(t=='y' || t=='Y'){
+        readFromFile(vec1);
+        cout << setw(20) << left << "Student Name" << setw(20) << left << "Surname" << setw(10) << right << "Final (avg.)" << setw(10) << right << "Final (med.):" <<endl;
+        cout << "-----------------------------------------------------------------" << endl;
+        for (int i = 0; i < vec1.size(); i++) {
+                outputfile(vec1.at(i));
+    }
+    }else if(t=='n' || t=='N'){
+        cout << "How many students do you have? ";
     int n;
     cin >> n;
 
@@ -39,7 +51,7 @@ int main() {
         for (int i = 0; i < n; i++)
             outputmed(vec1.at(i));
     }
-
+    }
     system("pause");
 
     return 0;

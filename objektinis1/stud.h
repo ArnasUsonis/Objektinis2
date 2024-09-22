@@ -15,5 +15,7 @@ void val(stud &lok);
 double vidurkis(stud &lok);
 void outputmed(stud lok);
 double mediana(stud &lok);
+void readFromFile(vector<stud>& vec1);
+void outputfile(stud lok);
 
 #endif // STUD_H_INCLUDED

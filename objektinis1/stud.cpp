@@ -44,6 +44,11 @@ void outputmed(stud lok)
     cout<< setw(15) <<left<< lok.vardas << setw(10)<<left<< lok.pavarde << setw(3) <<right<< fixed << setprecision(2) << lok.med <<endl;
 }
 
+void outputfile(stud lok)
+{
+    cout << setw(20) << left << lok.vardas << setw(20) << left << lok.pavarde << setw(10) << right << fixed << setprecision(2) << lok.vid << setw(10) << right << fixed << setprecision(2) << lok.med << endl;
+}
+
 void val(stud &lok){
     lok.vardas.clear();
     lok.pavarde.clear();
@@ -82,6 +87,45 @@ double mediana(stud &lok){
 
             return lok.med;
     }
+}
+
+void readFromFile(vector<stud>& vec) {
+    std::ifstream file("kursiokai.txt");
+    if (!file) {
+        std::cerr << "Error: Unable to open the file!" << std::endl;
+        return;
+    }
+
+    std::string line;
+
+    std::getline(file, line);
+
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        stud temp;
+        double grade;
+
+
+        iss >> temp.vardas >> temp.pavarde;
+
+
+        temp.nd.clear();
+        while (iss >> grade) {
+            temp.nd.push_back(grade);
+        }
+
+
+        temp.egz = temp.nd.back();
+        temp.nd.pop_back();
+
+
+        vidurkis(temp);
+        mediana(temp);
+
+        vec.push_back(temp);
+    }
+
+    file.close();
 }
 
 
