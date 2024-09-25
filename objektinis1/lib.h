@@ -10,6 +10,9 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
+
+
 
 using std::endl;
 using std::cout;
@@ -24,5 +27,14 @@ using std::vector;
 using std::sort;
 using std::stringstream;
 using std::ifstream;
+using std::getline;
+using std::exception;
+using std::runtime_error;
+using std::streamsize;
+using std::numeric_limits;
+using std::cerr;
+using std::istringstream;
+using std::runtime_error;
+
 
 #endif // LIB_H_INCLUDED

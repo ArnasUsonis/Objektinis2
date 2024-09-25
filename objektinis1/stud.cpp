@@ -1,36 +1,69 @@
 #include "stud.h"
 #include "lib.h"
 
-void ived(stud &lok)
-{
-    cout<<"input name and surname:";
-    cin>>lok.vardas>>lok.pavarde;
+void ived(stud &lok) {
+    cout << "Input name and surname: ";
+    cin >> lok.vardas >> lok.pavarde;
 
-    cout << "do you want to randomize exam and homework grades?(y/n)"<<endl;
     char r;
-    cin>>r;
+    bool validInput = false; // tikrinimas ar naudotojas pasirinko viena is galimu ats
 
-    if(r=='y' || r=='Y'){
-        int kiekisNd = rand() % 5 + 1; // nd kiekis (1-5)
-        for (int i = 0; i < kiekisNd; i++) {
-            double namuDarbas = rand() % 10 + 1; // nd pazymys (1-10)
-            lok.nd.push_back(namuDarbas);
+
+    while (!validInput) {
+        cout << "Do you want to randomize exam and homework grades? (y/n)" << endl;
+        cin >> r;
+
+        if (r == 'y' || r == 'Y') {
+            validInput = true;
+
+            int kiekisNd = rand() % 5 + 1; // nd kiekis (1-5)
+            for (int i = 0; i < kiekisNd; i++) {
+                double namuDarbas = rand() % 10 + 1; // nd pazymys (1-10)
+                lok.nd.push_back(namuDarbas);
+            }
+            lok.egz = rand() % 10 + 1; // egz (1-10)
+
+        } else if (r == 'n' || r == 'N') {
+            validInput = true;
+
+            cout << "Enter a homework grade and press enter (enter -1 to end it):" << endl;
+            double balas;
+            while (true) {
+                cin >> balas;
+
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore();
+                    cout << "Invalid input. Please enter homework grade and press enter: ";
+                    continue;
+                }
+
+                if (balas <= 0 && balas != -1) {
+                        cout << "Invalid input. Please enter a non-negative number or -1 to finish: ";
+                        continue;
+                }
+
+                if (balas == -1) {
+                    break; //nutraukiam cikla
+                }
+                lok.nd.push_back(balas);
+
+            }
+
+            while(true){
+            cout << "Enter exam score: ";
+            cin >> lok.egz;
+            if (cin.fail() || lok.egz<=0) {
+                cin.clear();
+                cin.ignore();
+                cout << "Invalid input for exam score."<<endl;
+                continue;
+            }break;
+
+            }
+        } else {
+            cout << "Please choose an appropriate answer (y/n)" << endl;
         }
-        lok.egz = rand() % 10 + 1; // egz (1-10)
-
-    }else if(r=='n'|| r=='N'){
-        cout << "enter homework grades (enter -1 to end it):"<<endl;
-    double balas;
-    while(true){
-        cin >> balas;
-        if(balas == -1){
-            break;
-        }
-        lok.nd.push_back(balas);
-    }
-
-    cout << "enter exam score: ";
-    cin >> lok.egz;
     }
 }
 
@@ -57,6 +90,12 @@ void val(stud &lok){
 }
 
 double vidurkis(stud &lok){
+    if (lok.nd.empty()) {
+        cout<< "Error: No homework grades provided for average!" << endl;
+        lok.vid = 0.0; // Nustatome vidurkį į 0, jei nėra pažymių
+        return lok.vid;
+    }
+
     double sum = 0.0;
 
     for (int i = 0; i < lok.nd.size(); i++) {
@@ -71,6 +110,12 @@ double vidurkis(stud &lok){
 }
 
 double mediana(stud &lok){
+    if (lok.nd.empty()) {
+        cout<< "Error: No homework grades provided for mediana!" << endl;
+        lok.med = 0.0; // Nustatome mediana i 0 jei nėra pažymių
+        return lok.vid;
+    }
+
     sort(lok.nd.begin(), lok.nd.end());
 
     if (lok.nd.size() % 2 == 0){
@@ -90,18 +135,19 @@ double mediana(stud &lok){
 }
 
 void readFromFile(vector<stud>& vec) {
-    std::ifstream file("kursiokai.txt");
+    ifstream file("kursiokai.txt");
+
     if (!file) {
-        std::cerr << "Error: Unable to open the file!" << std::endl;
-        return;
+        throw runtime_error("unable to open file");
     }
 
-    std::string line;
+    string line;
 
-    std::getline(file, line);
+    getline(file, line); //skipinam pirma eilute
 
-    while (std::getline(file, line)) {
-        std::istringstream iss(line);
+    //skaitom varda pavarde
+    while (getline(file, line)) {
+        istringstream iss(line);
         stud temp;
         double grade;
 
@@ -115,17 +161,18 @@ void readFromFile(vector<stud>& vec) {
         }
 
 
+        //paskutinis balas yra egzo balas
         temp.egz = temp.nd.back();
         temp.nd.pop_back();
 
 
         vidurkis(temp);
         mediana(temp);
-
         vec.push_back(temp);
     }
 
     file.close();
 }
+
 
 
