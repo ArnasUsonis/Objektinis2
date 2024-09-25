@@ -6,8 +6,6 @@ int main() {
     stud temp;
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
-
-
     cout << "Do you want to read the file kursiokai.txt? (y/n): ";
     char t;
     cin >> t;
@@ -22,35 +20,37 @@ int main() {
                 break; // iseinam
             }
 
+            // rusiavimas pagal varda
+            sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
+                return a.vardas < b.vardas;
+            });
 
+            // Išvedimas
             cout << setw(20) << left << "Student Name"
                  << setw(20) << left << "Surname"
                  << setw(10) << right << "Final (avg.)"
                  << setw(10) << right << "Final (med.):" << endl;
             cout << "-----------------------------------------------------------------" << endl;
+
             for (size_t i = 0; i < vec1.size(); ++i) {
                 outputfile(vec1.at(i)); // spauzdinam rezultatus
             }
             break; // iseinam is loop perskaicius faila
         }
         else if (t == 'n' || t == 'N') {
-            int n;
-
-            // Prompt user for the number of students
             while (true) {
                 cout << "How many students do you have? ";
                 cin >> n;
 
-                // Input validation
+                // Tikrinam vartotojo ivestus duomenis
                 if (cin.fail() || n < 0) {
-                    cin.clear(); // istrinam erora
-                    cin.ignore(); // ignoruojam negalima inputa
+                    cin.clear(); // istrinam klaida
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoruojam neteisingą inputa
                     cout << "Invalid input. Please enter a positive integer." << endl;
                 } else {
-                    break; // jei galimas input
+                    break; // jei įvestis teisinga, nutraukiam ciklą
                 }
             }
-
 
             for (int i = 0; i < n; ++i) {
                 cout << "Please input user data: " << endl;
@@ -61,6 +61,10 @@ int main() {
                 val(temp);
             }
 
+
+            sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
+                return a.vardas < b.vardas;
+            });
 
             cout << "Do you want to use median for the final grades? (y/n): ";
             char ats;
@@ -91,14 +95,14 @@ int main() {
                 }
                 else {
                     cout << "Please choose an appropriate answer (y/n): ";
-                    cin >> ats; // kartojam uz negalima reiksme
+                    cin >> ats; // kartojam, jei įvesta neteisingai
                 }
             }
             break;
         }
         else {
             cout << "Please choose an appropriate answer (y/n): ";
-            cin >> t; // kartojam uz negalima reiksme
+            cin >> t; // kartojam, jei įvesta neteisingai
         }
     }
 
