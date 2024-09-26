@@ -134,41 +134,44 @@ double mediana(stud &lok){
     }
 }
 
-void readFromFile(vector<stud>& vec) {
-    ifstream file("kursiokai.txt");
+void readFromFile(const string& failas, vector<stud>& vec1) {
+    ifstream file(failas);
 
     if (!file) {
-        throw runtime_error("unable to open file");
+        throw runtime_error("unable to open file: " + failas);
     }
 
     string line;
 
-    getline(file, line); //skipinam pirma eilute
+    getline(file, line);
 
-    //skaitom varda pavarde
+
     while (getline(file, line)) {
         istringstream iss(line);
         stud temp;
         double grade;
 
-
         iss >> temp.vardas >> temp.pavarde;
-
 
         temp.nd.clear();
         while (iss >> grade) {
             temp.nd.push_back(grade);
         }
 
+        if (temp.nd.empty()) {
+            cerr << "No grades found for student: " << temp.vardas << " " << temp.pavarde << endl;
+            continue;
+        }
 
-        //paskutinis balas yra egzo balas
+
         temp.egz = temp.nd.back();
         temp.nd.pop_back();
 
 
         vidurkis(temp);
         mediana(temp);
-        vec.push_back(temp);
+
+        vec1.push_back(temp);
     }
 
     file.close();
