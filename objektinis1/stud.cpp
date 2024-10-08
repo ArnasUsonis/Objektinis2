@@ -134,7 +134,7 @@ double mediana(stud &lok){
     }
 }
 
-void readFromFile(const string& failas, vector<stud>& vec1) {
+void readFromFile(const string &failas, vector<stud>& vec1) {
     ifstream file(failas);
 
     if (!file) {
@@ -177,5 +177,58 @@ void readFromFile(const string& failas, vector<stud>& vec1) {
     file.close();
 }
 
+void generavimas(const string filename, int stud_kiekis) {
+    ofstream outfile(filename);
 
+    if (!outfile.is_open()) {
+        cerr << "Nepavyko atidaryti failo: " << filename << endl;
+        return;
+    }
+
+    outfile << "Vardas Pavarde ND1 ND2 ND3 ND4 ND5 Egzaminas" << endl; //antraste
+
+    for (int i = 1; i <= stud_kiekis; ++i) {
+        outfile << "Vardas" << i << " Pavarde" << i << " ";
+
+        for (int j = 0; j < 5; ++j) {
+            outfile << random_number();
+            if (j < 4) {
+                outfile << " "; // tarpas tarp pazymiu
+            }
+        }
+
+        outfile << " " << random_number() << endl; // egzamino rezultatas
+    }
+
+    outfile.close();
+    cout << "Sugeneruotas failas: " << filename << " su " << stud_kiekis << " irasu." << endl;
+}
+
+int random_number() {
+    return rand() % 10 + 1;// pazymys (1-10)
+}
+
+void skirstymas(const vector<stud>& vec1, vector<stud>& kietiakai, vector<stud>& vargsiukai) {
+    for (const stud& studentas : vec1) {
+        if (studentas.vid >= 5.0) {
+            kietiakai.push_back(studentas);
+        } else {
+            vargsiukai.push_back(studentas);
+        }
+    }
+}
+
+void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
+     ofstream out(pavadinimas);
+    out << left << setw(15) << "Vardas" << setw(15) << "Pavarde"
+        << setw(10) << "Galutinis" << endl;
+    out << "----------------------------------------------" << endl;
+
+    for (const auto& studentas : vec1) {
+        out << left << setw(15) << studentas.vardas
+            << setw(15) << studentas.pavarde
+            << setw(10) << fixed << setprecision(2)
+            << studentas.vid << endl;
+    }
+}
 

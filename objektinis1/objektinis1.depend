@@ -22,3 +22,27 @@
 	"stud.h"
 	"lib.h"
 
+1728408671 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\main.cpp
+	"lib.h"
+	"stud.h"
+
+1728410034 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\lib.h
+	<iostream>
+	<string>
+	<vector>
+	<iomanip>
+	<algorithm>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<sstream>
+	<stdexcept>
+	<chrono>
+
+1728408671 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.h
+	"lib.h"
+
+1728409697 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.cpp
+	"stud.h"
+	"lib.h"
+

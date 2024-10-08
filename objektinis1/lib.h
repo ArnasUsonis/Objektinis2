@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <chrono>
 
 
 
@@ -35,6 +36,8 @@ using std::numeric_limits;
 using std::cerr;
 using std::istringstream;
 using std::runtime_error;
+using std::ofstream;
+using namespace std::chrono;
 
 
 #endif // LIB_H_INCLUDED
