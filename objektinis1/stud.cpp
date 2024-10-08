@@ -260,7 +260,7 @@ void measureTime(const string filename, int stud_num) {
     cout << stud_num << " Studentu rusiavimas uztruko: " << fixed << setprecision(6) << seconds_sort << " s" << endl;
 
     //paruosimas isvedimui
-    string kietiakai_filename = "kietiakai_" + to_string(stud_num) + ".txt";
+    string kietiakai_filename = "kietiakai_" + to_string(stud_num) + ".txt"; //pridetas skaicius prie skirstymo failo
     string vargsiukai_filename = "vargsiukai_" + to_string(stud_num) + ".txt";
 
     // 4. duomenu isvedimas i failus laikas
@@ -277,7 +277,7 @@ void measureTime(const string filename, int stud_num) {
     double overall_seconds = overall_duration.count() / 1e6;
     cout << stud_num << " isviso uztruko " << fixed << setprecision(6) << overall_seconds << " s" << endl;
     cout << endl;
-    val(vec1);
+    val(vec1); //isvalomi vektoriai
     val(kietiakai);
     val(vargsiukai);
 
