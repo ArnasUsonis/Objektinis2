@@ -38,6 +38,7 @@ using std::istringstream;
 using std::runtime_error;
 using std::ofstream;
 using namespace std::chrono;
+using std::to_string;
 
 
 #endif // LIB_H_INCLUDED

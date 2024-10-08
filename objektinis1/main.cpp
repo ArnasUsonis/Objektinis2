@@ -6,38 +6,13 @@ int main() {
     stud temp;
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
-    // 1. failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas("studentai_1000.txt", 1000);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << "Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
+    int studentu_skaicius[] = {1000, 10000, 100000};
 
-    // 2. duomenu nuskaitymo laikas
-    auto start_read = high_resolution_clock::now();
-    readFromFile("studentai_1000.txt", vec1);
-    auto end_read = high_resolution_clock::now();
-    auto duration_read = duration_cast<microseconds>(end_read - start_read);
-    double seconds_read = duration_read.count() / 1e6;
-    cout << "Duomenu nuskaitymas uztruko: " << fixed << setprecision(6) << seconds_read << " s" << endl;
 
-    // 3. studentu rusiavimo i dvi grupes laikas
-    auto start_sort = high_resolution_clock::now();
-    skirstymas(vec1, kietiakai, vargsiukai);
-    auto end_sort = high_resolution_clock::now();
-    auto duration_sort = duration_cast<microseconds>(end_sort - start_sort);
-    double seconds_sort = duration_sort.count() / 1e6;
-    cout << "Studentu rusiavimas uztruko: " << fixed << setprecision(6) << seconds_sort << " s" << endl;
-
-    // 4. duomenu isvedimas i failus laikas
-    auto start_write = high_resolution_clock::now();
-    isvedimas("kietiakai.txt", kietiakai);
-    isvedimas("vargsiukai.txt", vargsiukai);
-    auto end_write = high_resolution_clock::now();
-    auto duration_write = duration_cast<microseconds>(end_write - start_write);
-    double seconds_write = duration_write.count() / 1e6;
-    cout << "Duomenu isvedimas uztruko: " << fixed << setprecision(6) << seconds_write << " s" << endl;
+    for (int numeris : studentu_skaicius) {
+        string filename = "students_" + to_string(numeris) + ".txt";
+        measureTime(filename, numeris);
+    }
 
 
     /*while(true){
