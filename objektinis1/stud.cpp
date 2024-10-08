@@ -81,12 +81,9 @@ void outputfile(stud lok)
 {
     cout << setw(20) << left << lok.vardas << setw(20) << left << lok.pavarde << setw(10) << right << fixed << setprecision(2) << lok.vid << setw(10) << right << fixed << setprecision(2) << lok.med << endl;
 }
-
-void val(stud &lok){
-    lok.vardas.clear();
-    lok.pavarde.clear();
-    lok.nd.clear();
-
+//pakeista
+void val(vector<stud>& vec){
+    vec.clear();
 }
 
 double vidurkis(stud &lok){
@@ -235,7 +232,7 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
 void measureTime(const string filename, int stud_num) {
     vector<stud> vec1, kietiakai, vargsiukai;
 
-    // Overall timer
+    // viso vykdymo laikas
     auto overall_start = high_resolution_clock::now();
 
     // 1. failo kurimo laikas
@@ -248,7 +245,7 @@ void measureTime(const string filename, int stud_num) {
 
     // 2. duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();
-    readFromFile("studentai_1000.txt", vec1);
+    readFromFile(filename, vec1);
     auto end_read = high_resolution_clock::now();
     auto duration_read = duration_cast<microseconds>(end_read - start_read);
     double seconds_read = duration_read.count() / 1e6;
@@ -262,10 +259,14 @@ void measureTime(const string filename, int stud_num) {
     double seconds_sort = duration_sort.count() / 1e6;
     cout << stud_num << " Studentu rusiavimas uztruko: " << fixed << setprecision(6) << seconds_sort << " s" << endl;
 
+    //paruosimas isvedimui
+    string kietiakai_filename = "kietiakai_" + to_string(stud_num) + ".txt";
+    string vargsiukai_filename = "vargsiukai_" + to_string(stud_num) + ".txt";
+
     // 4. duomenu isvedimas i failus laikas
     auto start_write = high_resolution_clock::now();
-    isvedimas("kietiakai.txt", kietiakai);
-    isvedimas("vargsiukai.txt", vargsiukai);
+    isvedimas(kietiakai_filename, kietiakai);
+    isvedimas(vargsiukai_filename, vargsiukai);
     auto end_write = high_resolution_clock::now();
     auto duration_write = duration_cast<microseconds>(end_write - start_write);
     double seconds_write = duration_write.count() / 1e6;
@@ -275,4 +276,9 @@ void measureTime(const string filename, int stud_num) {
     auto overall_duration = duration_cast<microseconds>(overall_end - overall_start);
     double overall_seconds = overall_duration.count() / 1e6;
     cout << stud_num << " isviso uztruko " << fixed << setprecision(6) << overall_seconds << " s" << endl;
+    cout << endl;
+    val(vec1);
+    val(kietiakai);
+    val(vargsiukai);
+
 }

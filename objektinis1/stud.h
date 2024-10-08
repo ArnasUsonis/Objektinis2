@@ -11,7 +11,7 @@ struct stud{
 
 void ived(stud &lok);
 void outputvid(stud lok);
-void val(stud &lok);
+void val(vector<stud>& vec);
 double vidurkis(stud &lok);
 void outputmed(stud lok);
 double mediana(stud &lok);

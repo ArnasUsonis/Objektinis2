@@ -10,7 +10,7 @@ int main() {
 
 
     for (int numeris : studentu_skaicius) {
-        string filename = "students_" + to_string(numeris) + ".txt";
+        string filename = "studentai_" + to_string(numeris) + ".txt";
         measureTime(filename, numeris);
     }
 

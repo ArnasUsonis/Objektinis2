@@ -22,7 +22,7 @@
 	"stud.h"
 	"lib.h"
 
-1728413695 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\main.cpp
+1728413919 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\main.cpp
 	"lib.h"
 	"stud.h"
 
@@ -39,10 +39,10 @@
 	<stdexcept>
 	<chrono>
 
-1728413695 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.h
+1728415932 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.h
 	"lib.h"
 
-1728409697 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.cpp
+1728416041 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.cpp
 	"stud.h"
 	"lib.h"
 
