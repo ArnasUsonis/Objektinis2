@@ -7,7 +7,7 @@ int main() {
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
     int pasirinkimas;
 
-    int studentu_skaicius[] = {1000, 10000, 100000};
+    int studentu_skaicius[] = {1000, 10000, 100000, 1000000, 10000000};
 
     while(true){
         cout << "pasirinkite rusiavimo buda:" << endl;

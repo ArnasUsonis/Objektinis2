@@ -261,7 +261,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
         auto end_1 = high_resolution_clock::now();
         auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
         auto seconds_1 = duration_gen.count() / 1e6;
-        cout << stud_num << "Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
+        cout << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
 
     } else if (pasirinkimas == 2) {
         auto start_2 = high_resolution_clock::now();
@@ -272,7 +272,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
         auto end_2 = high_resolution_clock::now();
         auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
         auto seconds_2 = duration_gen.count() / 1e6;
-        cout << stud_num << "Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
+        cout << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
 
     }
 
