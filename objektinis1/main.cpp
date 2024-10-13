@@ -5,13 +5,27 @@ int main() {
     vector<stud> vec1, kietiakai, vargsiukai;
     stud temp;
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
+    int pasirinkimas;
 
     int studentu_skaicius[] = {1000, 10000, 100000};
+
+    while(true){
+        cout << "pasirinkite rusiavimo buda:" << endl;
+        cout << "1 - pagal vardus" << endl;
+        cout << "2 - pagal pavardes" <<endl;
+        cin >> pasirinkimas;
+
+        if (pasirinkimas != 1 && pasirinkimas != 2){
+            continue;
+        }else{
+            break;
+        }
+    }
 
 
     for (int numeris : studentu_skaicius) {
         string filename = "studentai_" + to_string(numeris) + ".txt";
-        measureTime(filename, numeris);
+        measureTime(filename, numeris, pasirinkimas);
     }
 
 

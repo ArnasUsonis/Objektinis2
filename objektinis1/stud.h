@@ -21,6 +21,6 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1);
 int random_number();
 void skirstymas(const vector<stud>& vec1, vector<stud>& kietiakai, vector<stud>& vargsiukai);
 void generavimas(const string filename, int stud_kiekis);
-void measureTime(const string filename, int numStudents);
+void measureTime(const string filename, int stud_num, int pasirinkimas);
 
 #endif // STUD_H_INCLUDED
