@@ -12,7 +12,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <chrono>
-
+#include <list>
 
 
 using std::endl;
@@ -39,6 +39,6 @@ using std::runtime_error;
 using std::ofstream;
 using namespace std::chrono;
 using std::to_string;
-
+using std::list;
 
 #endif // LIB_H_INCLUDED

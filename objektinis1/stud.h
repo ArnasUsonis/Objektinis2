@@ -21,6 +21,12 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1);
 int random_number();
 void skirstymas(const vector<stud>& vec1, vector<stud>& kietiakai, vector<stud>& vargsiukai);
 void generavimas(const string filename, int stud_kiekis);
-void measureTime(const string filename, int stud_num, int pasirinkimas);
-
+void measureTimeVec(const string filename, int stud_num, int pasirinkimas, string konteineris);
+void measureTimeLst(const string filename, int stud_num, int pasirinkimas, string konteineris);
+void pasirinkti(int &pasirinkimas);
+void pasirinktikont(int &kont);
+void kontNustatymas(string &konteineris, int &kont);
+void readFromFileLst(const string &failas, list<stud>& lst1);
+void skirstymasLst(const list<stud>& lst1, list<stud>& kietiakai, list<stud>& vargsiukai);
+void isvedimasLst(const string pavadinimas, const list<stud>& lst1);
 #endif // STUD_H_INCLUDED

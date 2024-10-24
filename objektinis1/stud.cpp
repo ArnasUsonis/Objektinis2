@@ -229,7 +229,7 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
     }
 }
 
-void measureTime(const string filename, int stud_num, int pasirinkimas) {
+void measureTimeVec(const string filename, int stud_num, int pasirinkimas, string konteineris) {
     vector<stud> vec1, kietiakai, vargsiukai;
 
     // viso vykdymo laikas
@@ -249,7 +249,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
     auto end_read = high_resolution_clock::now();
     auto duration_read = duration_cast<microseconds>(end_read - start_read);
     double seconds_read = duration_read.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Duomenu nuskaitymas uztruko: " << fixed << setprecision(6) << seconds_read << " s" << endl;
+    cout << konteineris << " " << stud_num << " Duomenu nuskaitymas uztruko: " << fixed << setprecision(6) << seconds_read << " s" << endl;
 
     // rusiavimas pagal varda arba pavarde
     if (pasirinkimas == 1) {
@@ -261,7 +261,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
         auto end_1 = high_resolution_clock::now();
         auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
         auto seconds_1 = duration_gen.count() / 1e6; // konvertuojam i sekundes
-        cout << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
+        cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
 
     } else if (pasirinkimas == 2) {
         auto start_2 = high_resolution_clock::now();
@@ -272,7 +272,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
         auto end_2 = high_resolution_clock::now();
         auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
         auto seconds_2 = duration_gen.count() / 1e6; // konvertuojam i sekundes
-        cout << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
+        cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
 
     }
 
@@ -282,7 +282,7 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
     auto end_sort = high_resolution_clock::now();
     auto duration_sort = duration_cast<microseconds>(end_sort - start_sort);
     double seconds_sort = duration_sort.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Studentu rusiavimas uztruko: " << fixed << setprecision(6) << seconds_sort << " s" << endl;
+    cout << konteineris << " " << stud_num << " Studentu rusiavimas uztruko: " << fixed << setprecision(6) << seconds_sort << " s" << endl;
 
     //paruosimas isvedimui
     string kietiakai_filename = "kietiakai_" + to_string(stud_num) + ".txt"; //pridetas skaicius prie skirstymo failo
@@ -295,12 +295,12 @@ void measureTime(const string filename, int stud_num, int pasirinkimas) {
     auto end_write = high_resolution_clock::now();
     auto duration_write = duration_cast<microseconds>(end_write - start_write);
     double seconds_write = duration_write.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Duomenu isvedimas uztruko: " << fixed << setprecision(6) << seconds_write << " s" << endl;
+    cout << konteineris << " " << stud_num << " Duomenu isvedimas uztruko: " << fixed << setprecision(6) << seconds_write << " s" << endl;
 
     auto overall_end = high_resolution_clock::now();
     auto overall_duration = duration_cast<microseconds>(overall_end - overall_start);
     double overall_seconds = overall_duration.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " isviso uztruko " << fixed << setprecision(6) << overall_seconds << " s" << endl;
+    cout << konteineris << " " << stud_num << " isviso uztruko " << fixed << setprecision(6) << overall_seconds << " s" << endl;
     cout << endl;
 
     val(vec1); //isvalomi vektoriai

@@ -2,31 +2,33 @@
 #include "stud.h"
 
 int main() {
-    vector<stud> vec1, kietiakai, vargsiukai;
+    list<stud> lst1, kietiakai, vargsiukai;
     stud temp;
+    string konteineris;
+    int kont;
+
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
     int pasirinkimas;
 
-    int studentu_skaicius[] = {1000, 10000, 100000, 1000000, 10000000};
+    int studentu_skaicius[] = {1000};
 
-    while(true){
-        cout << "pasirinkite rusiavimo buda:" << endl;
-        cout << "1 - pagal vardus" << endl;
-        cout << "2 - pagal pavardes" <<endl;
-        cin >> pasirinkimas;
+    pasirinkti(pasirinkimas);
+    pasirinktikont(kont);
+    kontNustatymas(konteineris, kont);
 
-        if (pasirinkimas != 1 && pasirinkimas != 2){
-            continue;
-        }else{
-            break;
-        }
+    if(kont == 1){
+        for (int numeris : studentu_skaicius) {
+                string filename = "studentai_" + to_string(numeris) + ".txt";
+                measureTimeVec(filename, numeris, pasirinkimas, konteineris);
+    }
+    }else if(kont == 2){
+        for (int numeris : studentu_skaicius) {
+                string filename = "studentai_" + to_string(numeris) + ".txt";
+                measureTimeLst(filename, numeris, pasirinkimas, konteineris);
+    }
     }
 
 
-    for (int numeris : studentu_skaicius) {
-        string filename = "studentai_" + to_string(numeris) + ".txt";
-        measureTime(filename, numeris, pasirinkimas);
-    }
 
 
     /*while(true){

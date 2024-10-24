@@ -22,11 +22,11 @@
 	"stud.h"
 	"lib.h"
 
-1728825995 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\main.cpp
+1729761296 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\main.cpp
 	"lib.h"
 	"stud.h"
 
-1728413695 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\lib.h
+1729761088 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\lib.h
 	<iostream>
 	<string>
 	<vector>
@@ -38,11 +38,16 @@
 	<sstream>
 	<stdexcept>
 	<chrono>
+	<list>
 
-1728825850 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.h
+1729761296 c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.h
 	"lib.h"
 
-1728825995 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.cpp
+1729761088 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\stud.cpp
+	"stud.h"
+	"lib.h"
+
+1729761296 source:c:\users\lordofgames\desktop\objektinis1-0.1release\objektinis1\objektinis1\listui.cpp
 	"stud.h"
 	"lib.h"
 
