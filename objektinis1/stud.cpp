@@ -218,14 +218,14 @@ void skirstymas(const vector<stud>& vec1, vector<stud>& kietiakai, vector<stud>&
 void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
      ofstream out(pavadinimas);
     out << left << setw(15) << "Vardas" << setw(15) << "Pavarde"
-        << setw(10) << "Galutinis" << endl;
-    out << "----------------------------------------------" << endl;
+        << setw(10) << "Galutinis" << setw(20) << "Adresas" << endl;
+    out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : vec1) {
         out << left << setw(15) << studentas.vardas
             << setw(15) << studentas.pavarde
-            << setw(10) << fixed << setprecision(2)
-            << studentas.vid << endl;
+            << setw(10) << fixed << setprecision(2) << studentas.vid
+            << setw(20) << &studentas << endl;
     }
 }
 

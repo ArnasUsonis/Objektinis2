@@ -99,14 +99,15 @@ void skirstymasLst(const list<stud>& lst1, list<stud>& kietiakai, list<stud>& va
 void isvedimasLst(const string pavadinimas, const list<stud>& lst1) {
      ofstream out(pavadinimas);
     out << left << setw(15) << "Vardas" << setw(15) << "Pavarde"
-        << setw(10) << "Galutinis" << endl;
-    out << "----------------------------------------------" << endl;
+        << setw(10) << "Galutinis" << setw(20) << "Adresas" << endl;
+    out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : lst1) {
         out << left << setw(15) << studentas.vardas
             << setw(15) << studentas.pavarde
             << setw(10) << fixed << setprecision(2)
-            << studentas.vid << endl;
+            << studentas.vid
+            << setw(20) << &studentas << endl;
     }
 }
 
