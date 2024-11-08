@@ -85,3 +85,53 @@ list 10 000 000 isviso uztruko 354.420880 s<br>
 ### Isvados:
 Didziausi skirtumai matomi studentus rusiuojant pagal vardus arba pavardes, kas listuose daroma zymiai greiciau nei vektoriuose.
 
+# Spartos analize (v1.0)
+Testuojam studentu rusiavima i dvi grupes 3 strategijas:
+
+### 1 STRATEGIJA:
+vector 1000 Studentu rusiavimas uztruko: 0.000000 s<br>
+vector 10 000 Studentu rusiavimas uztruko: 0.001998 s<br>
+vector 100 000 Studentu rusiavimas uztruko: 0.019245 s<br>
+vector 1 000 000 Studentu rusiavimas uztruko: 0.178742 s<br>
+vector 10 000 000 Studentu rusiavimas uztruko: 1.799656 s<br>
+Vidurkis: 0.3999282 s<br>
+
+list 1000 Studentu rusiavimas uztruko: 0.000751 s<br>
+list 10 000 Studentu rusiavimas uztruko: 0.001999 s<br>
+list 100 000 Studentu rusiavimas uztruko: 0.032069 s<br>
+list 1 000 000 Studentu rusiavimas uztruko: 0.203321 s<br>
+list 10 000 000 Studentu rusiavimas uztruko: 2.324669 s<br>
+Vidurkis: 0.5125618 s<br>
+
+### 2 STRATEGIJA:
+vector 1000 Studentu rusiavimas uztruko: 0.002998 s<br>
+vector 10 000 Studentu rusiavimas uztruko: 0.296418 s<br>
+vector 100 000 Studentu rusiavimas uztruko: 32.306840 s<br>
+vector 1 000 000 Studentu rusiavimas uztruko: - (labai ilgai)<br>
+vector 10 000 000 Studentu rusiavimas uztruko: -<br>
+Vidurkis: -<br>
+
+list 1000 Studentu rusiavimas uztruko: 0.000000 s<br>
+list 10 000 Studentu rusiavimas uztruko: 0.000999 s<br>
+list 100 000 Studentu rusiavimas uztruko: 0.009869 s<br>
+list 1 000 000 Studentu rusiavimas uztruko: 0.094055 s<br>
+list 10 000 000 Studentu rusiavimas uztruko: 0.987879 s<br>
+Vidurkis: 0.2185604 s
+
+### 3 STRATEGIJA:
+vector 1000 Studentu rusiavimas uztruko: 0.001001 s<br>
+vector 10 000 Studentu rusiavimas uztruko: 0.000997 s<br>
+vector 100 000 Studentu rusiavimas uztruko: 0.016252 s<br>
+vector 1 000 000 Studentu rusiavimas uztruko: 0.159152 s<br>
+vector 10 000 000 Studentu rusiavimas uztruko: 1.508008 s<br>
+Vidurkis: 0.337082 s
+
+### Isvados:
+2 strategija, listu atzvilgiu, yra zymiai geresne nei pirma, bet vektoriams tragiska, o pritaikius funkcijas is STL isprendzia sia problema vektoriams(zr. 3 strategijos rezultatus).
+
+3 strategijos rezultatu foto:
+
+![image](https://github.com/user-attachments/assets/5b001ae8-28de-4829-b18b-c39d470e70b5)
+
+
+*CPU: i7-4790  RAM:16gb*
