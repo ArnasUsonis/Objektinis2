@@ -9,7 +9,7 @@ int main() {
 
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
-    int studentu_skaicius[] = {1000000};
+    int studentu_skaicius[] = {1000,10000,100000,1000000,10000000};
     size_t studskaic = sizeof(studentu_skaicius) / sizeof(studentu_skaicius[0]);
     strategija(strat);
     pasirinkti(pasirinkimas);
