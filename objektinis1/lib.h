@@ -40,5 +40,10 @@ using std::ofstream;
 using namespace std::chrono;
 using std::to_string;
 using std::list;
+using std::remove;
+using std::partition;
+using std::copy;
+using std::remove_if;
+using std::back_inserter;
 
 #endif // LIB_H_INCLUDED

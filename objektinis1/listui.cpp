@@ -112,7 +112,7 @@ void isvedimasLst(const string pavadinimas, const list<stud>& lst1) {
 }
 
 void measureTimeLst(const string filename, int stud_num, int pasirinkimas, string konteineris) {
-    list<stud> lst1, kietiakai, vargsiukai;//vec1
+    list<stud> lst1, kietiakai, vargsiukai;
 
     // viso vykdymo laikas
     auto overall_start = high_resolution_clock::now();

@@ -29,4 +29,13 @@ void kontNustatymas(string &konteineris, int &kont);
 void readFromFileLst(const string &failas, list<stud>& lst1);
 void skirstymasLst(const list<stud>& lst1, list<stud>& kietiakai, list<stud>& vargsiukai);
 void isvedimasLst(const string pavadinimas, const list<stud>& lst1);
+void skirstymas2str(vector<stud>& vec, vector<stud>& vargsiukai);
+void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, string konteineris);
+void skirstymasLst2str(list<stud>& lst1, list<stud>& vargsiukai);
+void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, string konteineris);
+void strategija(int &strat);
+void kokiastrategija(int strat, int kont,const int studentu_skaicius[], int pasirinkimas, const string& konteineris, size_t studskaic);
+bool arvargsiukas(const stud& s);
+void skirstymas3str(vector<stud>& vec1, vector<stud>& vargsiukai);
+void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, string konteineris);
 #endif // STUD_H_INCLUDED

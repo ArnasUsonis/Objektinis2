@@ -308,3 +308,19 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
     val(vargsiukai);
 
 }
+
+void strategija(int &strat)
+{
+    while(true){
+        cout << "pasirinkite strategija:" << endl;
+        cout << "1 arba 2 arba 3" << endl;
+        cin >> strat;
+
+        if (strat != 1 && strat != 2 && strat != 3){
+            continue;
+        }else{
+            break;
+        }
+    }
+}
+

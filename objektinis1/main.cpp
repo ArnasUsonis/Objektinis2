@@ -5,28 +5,22 @@ int main() {
     list<stud> lst1, kietiakai, vargsiukai;
     stud temp;
     string konteineris;
-    int kont;
+    int kont, strat, pasirinkimas;
 
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
-    int pasirinkimas;
 
-    int studentu_skaicius[] = {1000};
-
+    int studentu_skaicius[] = {1000000};
+    size_t studskaic = sizeof(studentu_skaicius) / sizeof(studentu_skaicius[0]);
+    strategija(strat);
     pasirinkti(pasirinkimas);
-    pasirinktikont(kont);
+    if (strat == 3){
+        kont = 1;
+    }else{
+        pasirinktikont(kont);
+    }
     kontNustatymas(konteineris, kont);
 
-    if(kont == 1){
-        for (int numeris : studentu_skaicius) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
-                measureTimeVec(filename, numeris, pasirinkimas, konteineris);
-    }
-    }else if(kont == 2){
-        for (int numeris : studentu_skaicius) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
-                measureTimeLst(filename, numeris, pasirinkimas, konteineris);
-    }
-    }
+    kokiastrategija(strat, kont, studentu_skaicius, pasirinkimas, konteineris, studskaic);
 
 
 

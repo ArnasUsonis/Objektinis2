@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="kursiokai.txt" />
 		<Unit filename="lib.h" />
+		<Unit filename="listui.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="stud.cpp" />
 		<Unit filename="stud.h" />
