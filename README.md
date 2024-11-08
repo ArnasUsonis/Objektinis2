@@ -135,3 +135,6 @@ Vidurkis: 0.337082 s
 
 
 *CPU: i7-4790  RAM:16gb*
+
+## Instaliavimas bei paleidimas:
+Atsisiunciat V0.1 release, kadangi naudojama cmake paleidimui reikes ne mazesnes kaip 3.31 versijos cmake windows sistemai, o kompiliavimui uzteks tiesiog du kartus paspausti ant run.bat faila.
