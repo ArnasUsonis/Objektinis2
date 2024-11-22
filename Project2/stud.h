@@ -10,7 +10,7 @@ class stud{
 
     public:
 
-
+    //getteriai
     string getVardas() const { return vardas; }
     string getPavarde() const { return pavarde; }
     vector<double> getNd() const { return nd; }
@@ -18,6 +18,7 @@ class stud{
     double getVid() const { return vid; }
     double getMed() const { return med; }
 
+    //seteriai
     void setVardas(const string& v) { vardas = v; }
     void setPavarde(const string& p) { pavarde = p; }
     void setNd(const vector<double>& new_nd) { nd = new_nd; }
@@ -37,7 +38,7 @@ class stud{
             std::cerr << "Error: No grades in nd to assign to egz." << std::endl;
         }
     }
-
+    ~stud(){} // destruktorius
 
 };
 
