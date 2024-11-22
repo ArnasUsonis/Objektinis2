@@ -135,6 +135,59 @@ Vidurkis: 0.337082 s
 
 
 *CPU: i7-4790  RAM:16gb*
+# Spartos analize (v1.1)
+
+## class :
+100000 Failo kurimas uztruko: 0.657203 s<br>
+vector 100000 Duomenu nuskaitymas uztruko: 1.903391 s<br>
+vector 100000 Studentai surusiuoti pagal vardus per 0.657203 s<br>
+vector 100000 Studentu rusiavimas uztruko: 0.019994 s<br>
+vector 100000 Duomenu isvedimas uztruko: 0.863130 s<br>
+vector 100000 isviso uztruko 3.609665 s<br>
+
+1000000 Failo kurimas uztruko: 6.477034 s<br>
+vector 1000000 Duomenu nuskaitymas uztruko: 19.289833 s<br>
+vector 1000000 Studentai surusiuoti pagal vardus per 6.477034 s<br>
+vector 1000000 Studentu rusiavimas uztruko: 0.276924 s<br>
+vector 1000000 Duomenu isvedimas uztruko: 8.619423 s<br>
+vector 1000000 isviso uztruko 36.359636 s<br>
+
+## struct :
+100000 Failo kurimas uztruko: 0.653854 s<br>
+vector 100000 Duomenu nuskaitymas uztruko: 1.860402 s<br>
+vector 100000 Studentai surusiuoti pagal vardus per 0.653854 s<br>
+vector 100000 Studentu rusiavimas uztruko: 0.014010 s<br>
+vector 100000 Duomenu isvedimas uztruko: 0.860581 s<br>
+vector 100000 isviso uztruko 3.442403 s<br>
+
+1000000 Failo kurimas uztruko: 6.471268 s<br>
+vector 1000000 Duomenu nuskaitymas uztruko: 19.039902 s<br>
+vector 1000000 Studentai surusiuoti pagal vardus per 6.471268 s<br>
+vector 1000000 Studentu rusiavimas uztruko: 0.175948 s<br>
+vector 1000000 Duomenu isvedimas uztruko: 8.439341 s<br>
+vector 1000000 isviso uztruko 34.759877 s<br>
+
+### Isvada:
+kazkokio labai akivaizdaus greitumo laiko prasme tarp abieju nepastebejau(labai nezymus).
+
+##  Optimizavimo flagu analize :
+
+## O1 :
+
+![image](https://github.com/user-attachments/assets/13b9a82e-4488-4672-a18d-d5cbc2cecfb2)
+
+
+## O2 :
+
+![image](https://github.com/user-attachments/assets/b041f82a-7ad1-4fdf-9ea9-e543069abe48)
+
+
+## O3 :
+
+![image](https://github.com/user-attachments/assets/b4122f7a-0cc3-4d04-862c-2892c0f560c6)
+
+### Isvada:
+class exe failas maziau sveria nei struct,o kazkoks skirtumas pakeitus flagus nesimato kazkodel, kazkuriam turejo sumazeti exe failo dydis, bet nesumazejo (buvo daroma per codeblocks).
 
 ## Instaliavimas bei paleidimas:
 Atsisiunciat V0.1 release, kadangi naudojama cmake paleidimui reikes ne mazesnes kaip 3.31 versijos cmake windows sistemai, o kompiliavimui uzteks tiesiog du kartus paspausti ant run.bat faila.
