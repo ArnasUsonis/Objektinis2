@@ -2,10 +2,43 @@
 #define STUD_H_INCLUDED
 #include "lib.h"
 
-struct stud{
-    std::string vardas,pavarde;
-    std::vector<double>nd;
-    double vid, med, egz, rez;
+class stud{
+    private:
+        string vardas,pavarde;
+        vector<double>nd;
+        double vid, med, egz, rez;
+
+    public:
+
+    //getteriai
+    string getVardas() const { return vardas; }
+    string getPavarde() const { return pavarde; }
+    vector<double> getNd() const { return nd; }
+    double getEgz() const { return egz; }
+    double getVid() const { return vid; }
+    double getMed() const { return med; }
+
+    //seteriai
+    void setVardas(const string& v) { vardas = v; }
+    void setPavarde(const string& p) { pavarde = p; }
+    void setNd(const vector<double>& new_nd) { nd = new_nd; }
+    void setEgz(double e) { egz = e; }
+    void setVid(double v) { vid = v; }
+    void setMed(double m) { med = m; }
+
+    void addNd(double grade) {
+        nd.push_back(grade);
+    }
+
+    void setEgzFromLastNd() {
+        if (!nd.empty()) {
+            egz = nd.back();
+            nd.pop_back();
+        } else {
+            std::cerr << "Error: No grades in nd to assign to egz." << std::endl;
+        }
+    }
+    ~stud(){} // destruktorius
 
 };
 

@@ -29,7 +29,7 @@ void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, s
         auto start_1 = high_resolution_clock::now();
 
         lst1.sort([](const stud& a, const stud& b) {
-            return a.vardas < b.vardas;
+            return a.getVardas() < b.getVardas();
         });
 
         auto end_1 = high_resolution_clock::now();
@@ -43,7 +43,7 @@ void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, s
         auto start_2 = high_resolution_clock::now();
 
         lst1.sort([](const stud& a, const stud& b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
 
         auto end_2 = high_resolution_clock::now();
@@ -88,7 +88,7 @@ void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, s
 
 void skirstymasLst2str(list<stud>& lst1, list<stud>& vargsiukai) {
     for (auto it = lst1.begin(); it != lst1.end(); ) {
-        if (it->vid < 5.0) {
+        if (it->getVid() < 5.0) {
             vargsiukai.push_back(*it);
             it = lst1.erase(it);
         } else {
@@ -124,7 +124,7 @@ void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, s
         auto start_1 = high_resolution_clock::now();
         // rusiavimas pagal varda
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.vardas < b.vardas;
+            return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
         auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
@@ -135,7 +135,7 @@ void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, s
         auto start_2 = high_resolution_clock::now();
         // rusiavimas pagal pavarde
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
         auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
@@ -178,7 +178,7 @@ void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, s
 
 void skirstymas2str(vector<stud>& vec1, vector<stud>& vargsiukai) {
     for (size_t i = 0; i < vec1.size(); ) {
-        if (vec1[i].vid < 5.0) {
+        if (vec1[i].getVid() < 5.0) {
             vargsiukai.push_back(vec1[i]);
             // vec1.begin yra kaip iteratorius kuris pointina i pirma elementa ir pridejus i prideda prie indexo ta i tai prie 0 + i bet gaunam reiksme to indekso vietoje
             vec1.erase(vec1.begin() + i);
@@ -241,7 +241,7 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
         auto start_1 = high_resolution_clock::now();
         // rusiavimas pagal varda
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.vardas < b.vardas;
+            return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
         auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
@@ -252,7 +252,7 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
         auto start_2 = high_resolution_clock::now();
         // rusiavimas pagal pavarde
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
         auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
@@ -294,7 +294,7 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
 }
 
 bool arvargsiukas(const stud& s) {
-    return s.vid < 5.0;
+    return s.getVid() < 5.0;
 }
 
 void skirstymas3str(vector<stud>& vec1, vector<stud>& vargsiukai) {

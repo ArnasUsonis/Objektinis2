@@ -3,11 +3,13 @@
 
 void ived(stud &lok) {
     cout << "Input name and surname: ";
-    cin >> lok.vardas >> lok.pavarde;
+    string vardas, pavarde;
+    cin >> vardas >> pavarde;
+    lok.setVardas(vardas);
+    lok.setPavarde(pavarde);
 
     char r;
-    bool validInput = false; // tikrinimas ar naudotojas pasirinko viena is galimu ats
-
+    bool validInput = false; // check if user chooses one of the valid options
 
     while (!validInput) {
         cout << "Do you want to randomize exam and homework grades? (y/n)" << endl;
@@ -16,12 +18,12 @@ void ived(stud &lok) {
         if (r == 'y' || r == 'Y') {
             validInput = true;
 
-            int kiekisNd = rand() % 5 + 1; // nd kiekis (1-5)
+            int kiekisNd = rand() % 5 + 1; // number of homework assignments (1-5)
             for (int i = 0; i < kiekisNd; i++) {
-                double namuDarbas = rand() % 10 + 1; // nd pazymys (1-10)
-                lok.nd.push_back(namuDarbas);
+                double namuDarbas = rand() % 10 + 1; // homework grade (1-10)
+                lok.addNd(namuDarbas);
             }
-            lok.egz = rand() % 10 + 1; // egz (1-10)
+            lok.setEgz(rand() % 10 + 1); // exam grade (1-10)
 
         } else if (r == 'n' || r == 'N') {
             validInput = true;
@@ -39,27 +41,30 @@ void ived(stud &lok) {
                 }
 
                 if (balas <= 0 && balas != -1) {
-                        cout << "Invalid input. Please enter a non-negative number or -1 to finish: ";
-                        continue;
+                    cout << "Invalid input. Please enter a non-negative number or -1 to finish: ";
+                    continue;
                 }
 
                 if (balas == -1) {
-                    break; //nutraukiam cikla
+                    break; // end the loop
                 }
-                lok.nd.push_back(balas);
-
+                lok.addNd(balas);
             }
 
-            while(true){
-            cout << "Enter exam score: ";
-            cin >> lok.egz;
-            if (cin.fail() || lok.egz<=0) {
-                cin.clear();
-                cin.ignore();
-                cout << "Invalid input for exam score."<<endl;
-                continue;
-            }break;
+            while (true) {
+                cout << "Enter exam score: ";
+                double score;
+                cin >> score;
 
+                if (cin.fail() || score <= 0) {
+                    cin.clear();
+                    cin.ignore();
+                    cout << "Invalid input for exam score." << endl;
+                    continue;
+                } else {
+                    lok.setEgz(score); // properly set the exam score
+                    break; // exit the loop after valid input
+                }
             }
         } else {
             cout << "Please choose an appropriate answer (y/n)" << endl;
@@ -67,103 +72,105 @@ void ived(stud &lok) {
     }
 }
 
+
 void outputvid(stud lok)
 {
-    cout<< setw(15) <<left<< lok.vardas << setw(10)<<left<< lok.pavarde << setw(3) <<right<< fixed << setprecision(2) << lok.vid <<endl;
+    cout<< setw(15) <<left<< lok.getVardas() << setw(10)<<left<< lok.getPavarde() << setw(3) <<right<< fixed << setprecision(2) << lok.getVid() <<endl;
 }
 
 void outputmed(stud lok)
 {
-    cout<< setw(15) <<left<< lok.vardas << setw(10)<<left<< lok.pavarde << setw(3) <<right<< fixed << setprecision(2) << lok.med <<endl;
+    cout<< setw(15) <<left<< lok.getVardas() << setw(10)<<left<< lok.getPavarde() << setw(3) <<right<< fixed << setprecision(2) << lok.getMed() <<endl;
 }
 
 void outputfile(stud lok)
 {
-    cout << setw(20) << left << lok.vardas << setw(20) << left << lok.pavarde << setw(10) << right << fixed << setprecision(2) << lok.vid << setw(10) << right << fixed << setprecision(2) << lok.med << endl;
+    cout << setw(20) << left << lok.getVardas() << setw(20) << left << lok.getPavarde() << setw(10) << right << fixed << setprecision(2) << lok.getVid() << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
 }
 //pakeista
 void val(vector<stud>& vec){
     vec.clear();
 }
 
-double vidurkis(stud &lok){
-    if (lok.nd.empty()) {
-        cout<< "Error: No homework grades provided for average!" << endl;
-        lok.vid = 0.0; // Nustatome vidurkį į 0, jei nėra pažymių
-        return lok.vid;
+double vidurkis(stud &lok) {
+    if (lok.getNd().empty()) {
+        cout << "Error: No homework grades provided for average!" << endl;
+        lok.setVid(0.0);
+        return 0.0;
     }
 
     double sum = 0.0;
+    const std::vector<double>& homeworkGrades = lok.getNd();
 
-    for (int i = 0; i < lok.nd.size(); i++) {
-        sum += lok.nd[i];
+    for (size_t i = 0; i < homeworkGrades.size(); i++) {
+        sum += homeworkGrades[i];
     }
 
-    double avghomework = sum / lok.nd.size();
+    double avghomework = sum / homeworkGrades.size();
+    double weightedAverage = 0.4 * avghomework + 0.6 * lok.getEgz();
 
-    lok.vid = 0.4 * avghomework + 0.6 * lok.egz;
-
-    return lok.vid;
+    lok.setVid(weightedAverage);
+    return weightedAverage;
 }
 
-double mediana(stud &lok){
-    if (lok.nd.empty()) {
-        cout<< "Error: No homework grades provided for mediana!" << endl;
-        lok.med = 0.0; // Nustatome mediana i 0 jei nėra pažymių
-        return lok.vid;
+double mediana(stud &lok) {
+    if (lok.getNd().empty()) {
+        cout << "Error: No homework grades provided for mediana!" << endl;
+        lok.setMed(0.0);
+        return 0.0;
     }
 
-    sort(lok.nd.begin(), lok.nd.end());
+    std::vector<double> homeworkGrades = lok.getNd();
+    std::sort(homeworkGrades.begin(), homeworkGrades.end());
 
-    if (lok.nd.size() % 2 == 0){
-            int middleIndex1 = lok.nd.size() / 2 - 1;
-            int middleIndex2 = lok.nd.size() / 2;
-            double medianValue = (lok.nd[middleIndex1] + lok.nd[middleIndex2]) / 2.0;
-        lok.med = 0.4*medianValue+0.6*lok.egz;
+    double medianValue;
+    size_t size = homeworkGrades.size();
+    if (size % 2 == 0) {
 
-        return lok.med;
-    }else{
-        int middleIndex = lok.nd.size() / 2;
-            int vid = lok.nd[middleIndex];
-            lok.med = 0.4*vid+0.6*lok.egz;
+        medianValue = (homeworkGrades[size / 2 - 1] + homeworkGrades[size / 2]) / 2.0;
+    } else {
 
-            return lok.med;
+        medianValue = homeworkGrades[size / 2];
     }
+
+    double weightedMedian = 0.4 * medianValue + 0.6 * lok.getEgz();
+    lok.setMed(weightedMedian);
+    return weightedMedian;
 }
 
 void readFromFile(const string &failas, vector<stud>& vec1) {
     ifstream file(failas);
 
     if (!file) {
-        throw runtime_error("unable to open file: " + failas);
+        throw runtime_error("Unable to open file: " + failas);
     }
 
     string line;
-
     getline(file, line);
-
 
     while (getline(file, line)) {
         istringstream iss(line);
         stud temp;
+        string vardas, pavarde;
         double grade;
 
-        iss >> temp.vardas >> temp.pavarde;
+        iss >> vardas >> pavarde;
+        temp.setVardas(vardas);
+        temp.setPavarde(pavarde);
 
-        temp.nd.clear();
+        vector<double> homeworkGrades;
         while (iss >> grade) {
-            temp.nd.push_back(grade);
+            homeworkGrades.push_back(grade);
         }
 
-        if (temp.nd.empty()) {
-            cerr << "No grades found for student: " << temp.vardas << " " << temp.pavarde << endl;
+        if (homeworkGrades.empty()) {
+            cerr << "No grades found for student: " << vardas << " " << pavarde << endl;
             continue;
         }
 
-
-        temp.egz = temp.nd.back();
-        temp.nd.pop_back();
-
+        temp.setEgz(homeworkGrades.back());
+        homeworkGrades.pop_back();
+        temp.setNd(homeworkGrades);
 
         vidurkis(temp);
         mediana(temp);
@@ -207,7 +214,7 @@ int random_number() {
 
 void skirstymas(const vector<stud>& vec1, vector<stud>& kietiakai, vector<stud>& vargsiukai) {
     for (const stud& studentas : vec1) {
-        if (studentas.vid >= 5.0) {
+        if (studentas.getVid() >= 5.0) {
             kietiakai.push_back(studentas);
         } else {
             vargsiukai.push_back(studentas);
@@ -222,9 +229,9 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : vec1) {
-        out << left << setw(15) << studentas.vardas
-            << setw(15) << studentas.pavarde
-            << setw(10) << fixed << setprecision(2) << studentas.vid
+        out << left << setw(15) << studentas.getVardas()
+            << setw(15) << studentas.getPavarde()
+            << setw(10) << fixed << setprecision(2) << studentas.getVid()
             << setw(20) << &studentas << endl;
     }
 }
@@ -256,7 +263,7 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
         auto start_1 = high_resolution_clock::now();
         // rusiavimas pagal varda
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.vardas < b.vardas;
+            return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
         auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
@@ -267,7 +274,7 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
         auto start_2 = high_resolution_clock::now();
         // rusiavimas pagal pavarde
         sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
         auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);

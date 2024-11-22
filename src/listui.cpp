@@ -57,24 +57,26 @@ void readFromFileLst(const string &failas, list<stud>& lst1) {
 
     while (getline(file, line)) {
         istringstream iss(line);
+        string vardas, pavarde;
         stud temp;
         double grade;
 
-        iss >> temp.vardas >> temp.pavarde;
+        iss >> vardas >> pavarde;
+        temp.setVardas(vardas);
+        temp.setPavarde(pavarde);
 
-        temp.nd.clear();
+        temp.setNd({});
         while (iss >> grade) {
-            temp.nd.push_back(grade);
+            temp.addNd(grade);
         }
 
-        if (temp.nd.empty()) {
-            cerr << "No grades found for student: " << temp.vardas << " " << temp.pavarde << endl;
+        if (temp.getNd().empty()) {
+            cerr << "No grades found for student: " << temp.getVardas() << " " << temp.getPavarde() << endl;
             continue;
         }
 
 
-        temp.egz = temp.nd.back();
-        temp.nd.pop_back();
+        temp.setEgzFromLastNd();
 
 
         vidurkis(temp);
@@ -88,7 +90,7 @@ void readFromFileLst(const string &failas, list<stud>& lst1) {
 
 void skirstymasLst(const list<stud>& lst1, list<stud>& kietiakai, list<stud>& vargsiukai) {
     for (const stud& studentas : lst1) {
-        if (studentas.vid >= 5.0) {
+        if (studentas.getVid() >= 5.0) {
             kietiakai.push_back(studentas);
         } else {
             vargsiukai.push_back(studentas);
@@ -103,12 +105,13 @@ void isvedimasLst(const string pavadinimas, const list<stud>& lst1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : lst1) {
-        out << left << setw(15) << studentas.vardas
-            << setw(15) << studentas.pavarde
+        out << left << setw(15) << studentas.getVardas()
+            << setw(15) << studentas.getPavarde()
             << setw(10) << fixed << setprecision(2)
-            << studentas.vid
+            << studentas.getVid()
             << setw(20) << &studentas << endl;
     }
+    out.close();
 }
 
 void measureTimeLst(const string filename, int stud_num, int pasirinkimas, string konteineris) {
@@ -139,7 +142,7 @@ void measureTimeLst(const string filename, int stud_num, int pasirinkimas, strin
         auto start_1 = high_resolution_clock::now();
 
         lst1.sort([](const stud& a, const stud& b) {
-            return a.vardas < b.vardas;
+            return a.getVardas() < b.getVardas();
         });
 
         auto end_1 = high_resolution_clock::now();
@@ -153,7 +156,7 @@ void measureTimeLst(const string filename, int stud_num, int pasirinkimas, strin
         auto start_2 = high_resolution_clock::now();
 
         lst1.sort([](const stud& a, const stud& b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
 
         auto end_2 = high_resolution_clock::now();
