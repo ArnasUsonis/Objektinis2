@@ -1,6 +1,6 @@
 #include "stud.h"
 #include "lib.h"
-
+//pakeista ived funkcija
 void ived(stud &lok) {
     cout << "Input name and surname: ";
     string vardas, pavarde;
@@ -87,8 +87,11 @@ void outputfile(stud lok)
 {
     cout << setw(20) << left << lok.getVardas() << setw(20) << left << lok.getPavarde() << setw(10) << right << fixed << setprecision(2) << lok.getVid() << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
 }
-//pakeista
-void val(vector<stud>& vec){
+void val(stud& student) {
+    student.clearData();
+}
+
+void val(vector<stud>& vec) {
     vec.clear();
 }
 

@@ -5,7 +5,8 @@ int main() {
     list<stud> lst1, kietiakai, vargsiukai;
     stud temp;
     string konteineris,filename;
-    int kont, strat, pasirinkimas,a,numeris;
+    int kont, strat, pasirinkimas,a,numeris,n;
+    vector<stud> vec1;
 
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
@@ -13,6 +14,7 @@ int main() {
         cout <<"norite generuoti faila?(spauskite 1)" <<endl;
         cout <<"norite nuskaityti faila?(spauskite 2)" <<endl;
         cout <<"norite baigti?(spauskite 3)"<<endl;
+        cout <<"norite parasyti ranka?(spauskite 4)"<<endl;
         cin >> a;
         if (a == 1){
             cout << "kiek studentu faila norite sugeneruoti?";
@@ -35,7 +37,64 @@ int main() {
            kokiastrategija(filename,strat, kont, pasirinkimas, konteineris, numeris);
         }else if(a == 3){
             return 0;
+        }else if(a==4){
+            while (true) {
+                cout << "How many students do you have? ";
+                cin >> n;
+
+                // Tikrinam vartotojo ivestus duomenis
+                if (cin.fail() || n < 0) {
+                    cin.clear(); // istrinam klaida
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoruojam neteisingą inputa
+                    cout << "Invalid input. Please enter a positive integer." << endl;
+                } else {
+                    break; // jei įvestis teisinga, nutraukiam ciklą
+                }
+            }
+
+            for (int i = 0; i < n; ++i) {
+                cout << "Please input user data: " << endl;
+                ived(temp);
+                vidurkis(temp);
+                mediana(temp);
+                vec1.push_back(temp);
+                val(temp);
+            }
+
+
+            sort(vec1.begin(), vec1.end(), [](const stud& a, const stud& b) {
+                return a.getVardas() < b.getVardas();
+            });
+
+            cout << "Do you want to use median for the final grades? (y/n): ";
+            char ats;
+            cin >> ats;
+
+            while (true) {
+                if (ats == 'n' || ats == 'N') {
+                    cout << setw(15) << left << "Student Name"
+                         << setw(10) << left << "Surname"
+                         << setw(3) << left << "Final (avg.):" << endl;
+                    cout << "-----------------------------------------------------------" << endl;
+
+                    for (int i = 0; i < n; ++i) {
+                        outputvid(vec1.at(i));
+                    }
+                    break;
+                }
+                else if (ats == 'y' || ats == 'Y') {
+                    cout << setw(15) << left << "Student Name"
+                         << setw(10) << left << "Surname"
+                         << setw(3) << left << "Final (med.):" << endl;
+                    cout << "-----------------------------------------------------------" << endl;
+
+                    for (int i = 0; i < n; ++i) {
+                        outputmed(vec1.at(i));
+                    }
+                    break;
+                    }
         }
+     }
     }
 
 
