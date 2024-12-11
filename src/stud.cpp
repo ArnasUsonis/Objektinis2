@@ -1,12 +1,8 @@
 #include "stud.h"
 #include "lib.h"
-
+//pakeista ived funkcija
 void ived(stud &lok) {
-    cout << "Input name and surname: ";
-    string vardas, pavarde;
-    cin >> vardas >> pavarde;
-    lok.setVardas(vardas);
-    lok.setPavarde(pavarde);
+    cin >> lok;
 
     char r;
     bool validInput = false; // check if user chooses one of the valid options
@@ -75,7 +71,7 @@ void ived(stud &lok) {
 
 void outputvid(stud lok)
 {
-    cout<< setw(15) <<left<< lok.getVardas() << setw(10)<<left<< lok.getPavarde() << setw(3) <<right<< fixed << setprecision(2) << lok.getVid() <<endl;
+    cout << lok <<endl;
 }
 
 void outputmed(stud lok)
@@ -85,10 +81,13 @@ void outputmed(stud lok)
 
 void outputfile(stud lok)
 {
-    cout << setw(20) << left << lok.getVardas() << setw(20) << left << lok.getPavarde() << setw(10) << right << fixed << setprecision(2) << lok.getVid() << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
+    cout << lok << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
 }
-//pakeista
-void val(vector<stud>& vec){
+void val(stud& student) {
+    student.clearData();
+}
+
+void val(vector<stud>& vec) {
     vec.clear();
 }
 
@@ -229,10 +228,7 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : vec1) {
-        out << left << setw(15) << studentas.getVardas()
-            << setw(15) << studentas.getPavarde()
-            << setw(10) << fixed << setprecision(2) << studentas.getVid()
-            << setw(20) << &studentas << endl;
+        out << studentas << setw(20) << &studentas << endl;
     }
 }
 
@@ -243,12 +239,6 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
     auto overall_start = high_resolution_clock::now();
 
     // failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas(filename, stud_num);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
 
     // duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();
@@ -266,8 +256,8 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
             return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
-        auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_1 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_1 = duration_cast<microseconds>(end_1 - start_1);
+        auto seconds_1 = duration_1.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
 
     } else if (pasirinkimas == 2) {
@@ -277,8 +267,8 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
             return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
-        auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_2 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_2 = duration_cast<microseconds>(end_2 - start_2);
+        auto seconds_2 = duration_2.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
 
     }

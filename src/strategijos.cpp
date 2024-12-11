@@ -188,30 +188,28 @@ void skirstymas2str(vector<stud>& vec1, vector<stud>& vargsiukai) {
     }
 }
 
-void kokiastrategija(int strat, int kont,const int studentu_skaicius[], int pasirinkimas, const string& konteineris, size_t studskaic) {
-    for (size_t i = 0; i < studskaic; ++i) {
-        int numeris = studentu_skaicius[i];
+void kokiastrategija(string filename,int strat, int kont, int pasirinkimas, const string& konteineris, int numeris) {
         if (strat == 1) {
             if (kont == 1) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
+
                 measureTimeVec(filename, numeris, pasirinkimas, konteineris);
             } else if (kont == 2) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
+
                 measureTimeLst(filename, numeris, pasirinkimas, konteineris);
             }
         } else if (strat == 2) {
             if (kont == 1) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
+
                 measureTimeVec2str(filename, numeris, pasirinkimas, konteineris);
             } else if (kont == 2) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
+
                 measureTimeLst2str(filename, numeris, pasirinkimas, konteineris);
             }
         } else if (strat == 3) {
-                string filename = "studentai_" + to_string(numeris) + ".txt";
+
                 measureTimeVec3str(filename, numeris, pasirinkimas, konteineris);
         }
-    }
+
 }
 
 void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, string konteineris) {
@@ -221,12 +219,6 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
     auto overall_start = high_resolution_clock::now();
 
     // failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas(filename, stud_num);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
 
     // duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();
@@ -244,8 +236,8 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
             return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
-        auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_1 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_1 = duration_cast<microseconds>(end_1 - start_1);
+        auto seconds_1 = duration_1.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
 
     } else if (pasirinkimas == 2) {
@@ -255,8 +247,8 @@ void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, s
             return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
-        auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_2 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_2 = duration_cast<microseconds>(end_2 - start_2);
+        auto seconds_2 = duration_2.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
 
     }

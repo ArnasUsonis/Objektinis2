@@ -9,7 +9,6 @@ class stud{
         double vid, med, egz, rez;
 
     public:
-
     //getteriai
     string getVardas() const { return vardas; }
     string getPavarde() const { return pavarde; }
@@ -19,15 +18,28 @@ class stud{
     double getMed() const { return med; }
 
     //seteriai
-    void setVardas(const string& v) { vardas = v; }
-    void setPavarde(const string& p) { pavarde = p; }
-    void setNd(const vector<double>& new_nd) { nd = new_nd; }
-    void setEgz(double e) { egz = e; }
-    void setVid(double v) { vid = v; }
-    void setMed(double m) { med = m; }
+    void setVardas(string vardas) { this->vardas = vardas; }
+    void setPavarde(string pavarde) { this->pavarde = pavarde; }
+    void setNd(vector<double> nd) { this->nd = nd; }
+    void setEgz(double egz) { this->egz = egz; }
+    void setVid(double vid) { this->vid = vid; }
+    void setMed(double med) { this->med = med; }
+    void setRez(double rez) { this->rez = rez; }
 
     void addNd(double grade) {
         nd.push_back(grade);
+    }
+    //kopijavimo operatorius
+    stud& operator=(const stud& a) {
+        if (this == &a) return *this;
+        this->vardas = a.vardas;
+        this->pavarde = a.pavarde;
+        this->nd = a.nd;
+        this->egz = a.egz;
+        this->vid = a.vid;
+        this->med = a.med;
+        this->rez = a.rez;
+        return *this;
     }
 
     void setEgzFromLastNd() {
@@ -40,11 +52,36 @@ class stud{
     }
     ~stud(){} // destruktorius
 
+
+    friend std::istream& operator>>(std::istream& in, stud& student) {
+        std::cout << "enter name: ";
+        in >> student.vardas;
+        std::cout << "enter surname: ";
+        in >> student.pavarde;
+        return in;
+    }
+
+    void clearData() {
+        vardas.clear();
+        pavarde.clear();
+        nd.clear();
+        egz = 0.0;
+        vid = 0.0;
+        med = 0.0;
+        rez = 0.0;
+    }
+
+
+  friend std::ostream& operator<<(std::ostream& out, const stud& student) {
+        out << std::left << std::setw(15) << student.vardas
+            << std::left << std::setw(15) << student.pavarde
+            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.vid;
+        return out;
+    }
 };
 
 void ived(stud &lok);
 void outputvid(stud lok);
-void val(vector<stud>& vec);
 double vidurkis(stud &lok);
 void outputmed(stud lok);
 double mediana(stud &lok);
@@ -67,8 +104,10 @@ void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, s
 void skirstymasLst2str(list<stud>& lst1, list<stud>& vargsiukai);
 void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, string konteineris);
 void strategija(int &strat);
-void kokiastrategija(int strat, int kont,const int studentu_skaicius[], int pasirinkimas, const string& konteineris, size_t studskaic);
+void kokiastrategija(string filename,int strat, int kont, int pasirinkimas, const string& konteineris, int numeris);
 bool arvargsiukas(const stud& s);
 void skirstymas3str(vector<stud>& vec1, vector<stud>& vargsiukai);
 void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, string konteineris);
+void val(vector<stud>& vec);
+void val(stud& student);
 #endif // STUD_H_INCLUDED

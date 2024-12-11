@@ -105,11 +105,7 @@ void isvedimasLst(const string pavadinimas, const list<stud>& lst1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : lst1) {
-        out << left << setw(15) << studentas.getVardas()
-            << setw(15) << studentas.getPavarde()
-            << setw(10) << fixed << setprecision(2)
-            << studentas.getVid()
-            << setw(20) << &studentas << endl;
+        out << studentas << setw(20) << &studentas << endl;
     }
     out.close();
 }

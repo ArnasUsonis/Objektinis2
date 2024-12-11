@@ -105,11 +105,7 @@ void isvedimasLst(const string pavadinimas, const list<stud>& lst1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : lst1) {
-        out << left << setw(15) << studentas.getVardas()
-            << setw(15) << studentas.getPavarde()
-            << setw(10) << fixed << setprecision(2)
-            << studentas.getVid()
-            << setw(20) << &studentas << endl;
+        out << studentas << setw(20) << &studentas << endl;
     }
     out.close();
 }
@@ -121,12 +117,7 @@ void measureTimeLst(const string filename, int stud_num, int pasirinkimas, strin
     auto overall_start = high_resolution_clock::now();
 
     // failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas(filename, stud_num);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
+
 
     // duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();
