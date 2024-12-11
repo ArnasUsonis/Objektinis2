@@ -243,12 +243,6 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
     auto overall_start = high_resolution_clock::now();
 
     // failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas(filename, stud_num);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
 
     // duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();
@@ -266,8 +260,8 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
             return a.getVardas() < b.getVardas();
         });
         auto end_1 = high_resolution_clock::now();
-        auto duration_1 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_1 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_1 = duration_cast<microseconds>(end_1 - start_1);
+        auto seconds_1 = duration_1.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal vardus per " << fixed << setprecision(6) << seconds_1 << " s" << endl;
 
     } else if (pasirinkimas == 2) {
@@ -277,8 +271,8 @@ void measureTimeVec(const string filename, int stud_num, int pasirinkimas, strin
             return a.getPavarde() < b.getPavarde();
         });
         auto end_2 = high_resolution_clock::now();
-        auto duration_2 = duration_cast<microseconds>(end_gen - start_gen);
-        auto seconds_2 = duration_gen.count() / 1e6; // konvertuojam i sekundes
+        auto duration_2 = duration_cast<microseconds>(end_2 - start_2);
+        auto seconds_2 = duration_2.count() / 1e6; // konvertuojam i sekundes
         cout << konteineris << " " << stud_num << " Studentai surusiuoti pagal pavardes per " << fixed << setprecision(6) << seconds_2 << " s" << endl;
 
     }

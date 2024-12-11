@@ -121,12 +121,7 @@ void measureTimeLst(const string filename, int stud_num, int pasirinkimas, strin
     auto overall_start = high_resolution_clock::now();
 
     // failo kurimo laikas
-    auto start_gen = high_resolution_clock::now();
-    generavimas(filename, stud_num);
-    auto end_gen = high_resolution_clock::now();
-    auto duration_gen = duration_cast<microseconds>(end_gen - start_gen);
-    double seconds_gen = duration_gen.count() / 1e6; // konvertuojam i sekundes
-    cout << stud_num << " Failo kurimas uztruko: " << fixed << setprecision(6) << seconds_gen << " s" << endl;
+
 
     // duomenu nuskaitymo laikas
     auto start_read = high_resolution_clock::now();

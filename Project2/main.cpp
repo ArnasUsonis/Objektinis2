@@ -4,12 +4,42 @@
 int main() {
     list<stud> lst1, kietiakai, vargsiukai;
     stud temp;
-    string konteineris;
-    int kont, strat, pasirinkimas;
+    string konteineris,filename;
+    int kont, strat, pasirinkimas,a,numeris;
 
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
-    int studentu_skaicius[] = {1000};
+    while(true){
+        cout <<"norite generuoti faila?(spauskite 1)" <<endl;
+        cout <<"norite nuskaityti faila?(spauskite 2)" <<endl;
+        cout <<"norite baigti?(spauskite 3)"<<endl;
+        cin >> a;
+        if (a == 1){
+            cout << "kiek studentu faila norite sugeneruoti?";
+            cin >> numeris;
+            string filename = "studentai_" + to_string(numeris) + ".txt";
+            generavimas(filename, numeris);
+        }else if(a == 2){
+            cout<<"parasykite failo pavadinima kuri norite nuskaityti(pvz. studentai_1000.txt)"<<endl;
+            cin >> filename;
+            cout << "parasykite skaiciu studentu tame faile"<<endl;
+            cin >> numeris;
+            strategija(strat);
+            pasirinkti(pasirinkimas);
+            if (strat == 3){
+             kont = 1;
+           }else{
+           pasirinktikont(kont);
+           }
+           kontNustatymas(konteineris, kont);
+           kokiastrategija(filename,strat, kont, pasirinkimas, konteineris, numeris);
+        }else if(a == 3){
+            return 0;
+        }
+    }
+
+
+    /*int studentu_skaicius[] = {100000,1000000};
     size_t studskaic = sizeof(studentu_skaicius) / sizeof(studentu_skaicius[0]);
     strategija(strat);
     pasirinkti(pasirinkimas);
@@ -20,7 +50,7 @@ int main() {
     }
     kontNustatymas(konteineris, kont);
 
-    kokiastrategija(strat, kont, studentu_skaicius, pasirinkimas, konteineris, studskaic);
+    kokiastrategija(strat, kont, studentu_skaicius, pasirinkimas, konteineris, studskaic);*/
 
 
 

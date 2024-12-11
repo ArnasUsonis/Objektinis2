@@ -67,7 +67,7 @@ void measureTimeVec2str(const string filename, int stud_num, int pasirinkimas, s
 void skirstymasLst2str(list<stud>& lst1, list<stud>& vargsiukai);
 void measureTimeLst2str(const string filename, int stud_num, int pasirinkimas, string konteineris);
 void strategija(int &strat);
-void kokiastrategija(int strat, int kont,const int studentu_skaicius[], int pasirinkimas, const string& konteineris, size_t studskaic);
+void kokiastrategija(string filename,int strat, int kont, int pasirinkimas, const string& konteineris, int numeris);
 bool arvargsiukas(const stud& s);
 void skirstymas3str(vector<stud>& vec1, vector<stud>& vargsiukai);
 void measureTimeVec3str(const string filename, int stud_num, int pasirinkimas, string konteineris);
