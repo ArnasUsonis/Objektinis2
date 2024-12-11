@@ -2,11 +2,7 @@
 #include "lib.h"
 //pakeista ived funkcija
 void ived(stud &lok) {
-    cout << "Input name and surname: ";
-    string vardas, pavarde;
-    cin >> vardas >> pavarde;
-    lok.setVardas(vardas);
-    lok.setPavarde(pavarde);
+    cin >> lok;
 
     char r;
     bool validInput = false; // check if user chooses one of the valid options
@@ -75,7 +71,7 @@ void ived(stud &lok) {
 
 void outputvid(stud lok)
 {
-    cout<< setw(15) <<left<< lok.getVardas() << setw(10)<<left<< lok.getPavarde() << setw(3) <<right<< fixed << setprecision(2) << lok.getVid() <<endl;
+    cout << lok <<endl;
 }
 
 void outputmed(stud lok)
@@ -85,7 +81,7 @@ void outputmed(stud lok)
 
 void outputfile(stud lok)
 {
-    cout << setw(20) << left << lok.getVardas() << setw(20) << left << lok.getPavarde() << setw(10) << right << fixed << setprecision(2) << lok.getVid() << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
+    cout << lok << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
 }
 void val(stud& student) {
     student.clearData();
@@ -232,10 +228,7 @@ void isvedimas(const string pavadinimas, const vector<stud>& vec1) {
     out << "-------------------------------------------------------------" << endl;
 
     for (const auto& studentas : vec1) {
-        out << left << setw(15) << studentas.getVardas()
-            << setw(15) << studentas.getPavarde()
-            << setw(10) << fixed << setprecision(2) << studentas.getVid()
-            << setw(20) << &studentas << endl;
+        out << studentas << setw(20) << &studentas << endl;
     }
 }
 

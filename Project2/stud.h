@@ -54,17 +54,10 @@ class stud{
 
 
     friend std::istream& operator>>(std::istream& in, stud& student) {
-        std::cout << "Iveskite varda: ";
+        std::cout << "enter name: ";
         in >> student.vardas;
-        std::cout << "Iveskite pavarde: ";
+        std::cout << "enter surname: ";
         in >> student.pavarde;
-
-        std::cout << "Iveskite pazymius (baigus ivedima, spauskite bet kokį simbolį): ";
-        double grade;
-        student.nd.clear();  // Išvalyti senus pažymius prieš įvedant naujus
-        while (in >> grade) {  // Nuskaityti pažymius, kol yra duomenų
-            student.nd.push_back(grade);
-        }
         return in;
     }
 
@@ -73,17 +66,16 @@ class stud{
         pavarde.clear();
         nd.clear();
         egz = 0.0;
+        vid = 0.0;
+        med = 0.0;
+        rez = 0.0;
     }
 
 
   friend std::ostream& operator<<(std::ostream& out, const stud& student) {
         out << std::left << std::setw(15) << student.vardas
             << std::left << std::setw(15) << student.pavarde
-            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.vid
-            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.med
-            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.rez
-            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.egz
-            << std::endl;
+            << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.vid;
         return out;
     }
 };
