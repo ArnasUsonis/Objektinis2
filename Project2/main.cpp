@@ -11,10 +11,12 @@ int main() {
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
     while(true){
+        cout << endl;
         cout <<"norite generuoti faila?(spauskite 1)" <<endl;
         cout <<"norite nuskaityti faila?(spauskite 2)" <<endl;
         cout <<"norite baigti?(spauskite 3)"<<endl;
         cout <<"norite parasyti ranka?(spauskite 4)"<<endl;
+        cout <<"norite pamatyti demonstracija?(spauskite 5)"<<endl;
         cin >> a;
         if (a == 1){
             cout << "kiek studentu faila norite sugeneruoti?";
@@ -94,6 +96,8 @@ int main() {
                     break;
                     }
         }
+     }else if (a == 5){
+         zmogus zm;
      }
     }
 

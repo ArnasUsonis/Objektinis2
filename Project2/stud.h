@@ -2,27 +2,42 @@
 #define STUD_H_INCLUDED
 #include "lib.h"
 
-class stud{
+class zmogus {
+	protected:
+  	string vardas,pavarde;
+	public:
+        string getVardas() const { return vardas; };
+		string getPavarde() const { return pavarde; };
+		void setVardas(string vardas) { this->vardas = vardas; };
+		void setPavarde(string pavarde) { this->pavarde = pavarde; };
+
+		zmogus() { cout << "Zmogus sukurtas" << endl; }
+        virtual ~zmogus() { cout << "Zmogus istrintas" << endl; }
+
+        virtual void skaiciuotiAmziu() = 0;
+};
+
+class stud : public zmogus{
     private:
-        string vardas,pavarde;
         vector<double>nd;
         double vid, med, egz, rez;
 
     public:
+
+        void skaiciuotiAmziu() override {
+        cout << "skaiciuojama"<<endl;
+    }
+
     // Numatytasis konstruktorius
-    stud() : vardas(""), pavarde(""), nd(), vid(0.0), med(0.0), egz(0.0), rez(0.0) {}
+    stud() : nd(), vid(0.0), med(0.0), egz(0.0), rez(0.0) {}
 
     //getteriai
-    string getVardas() const { return vardas; }
-    string getPavarde() const { return pavarde; }
     vector<double> getNd() const { return nd; }
     double getEgz() const { return egz; }
     double getVid() const { return vid; }
     double getMed() const { return med; }
 
     //seteriai
-    void setVardas(string vardas) { this->vardas = vardas; }
-    void setPavarde(string pavarde) { this->pavarde = pavarde; }
     void setNd(vector<double> nd) { this->nd = nd; }
     void setEgz(double egz) { this->egz = egz; }
     void setVid(double vid) { this->vid = vid; }
@@ -65,7 +80,6 @@ class stud{
             std::cerr << "Error: No grades in nd to assign to egz." << std::endl;
         }
     }
-    ~stud(){} // destruktorius
 
 
     friend std::istream& operator>>(std::istream& in, stud& student) {
@@ -93,6 +107,8 @@ class stud{
             << std::left << std::setw(15) << std::fixed << std::setprecision(2) << student.vid;
         return out;
     }
+
+    ~stud(){} // destruktorius
 };
 
 void ived(stud &lok);
