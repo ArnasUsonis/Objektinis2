@@ -9,6 +9,9 @@ class stud{
         double vid, med, egz, rez;
 
     public:
+    // Numatytasis konstruktorius
+    stud() : vardas(""), pavarde(""), nd(), vid(0.0), med(0.0), egz(0.0), rez(0.0) {}
+
     //getteriai
     string getVardas() const { return vardas; }
     string getPavarde() const { return pavarde; }
@@ -41,6 +44,18 @@ class stud{
         this->rez = a.rez;
         return *this;
     }
+
+    // Kopijavimo konstruktorius
+    stud(const stud& other) {
+        vardas = other.vardas;
+        pavarde = other.pavarde;
+        nd = other.nd;
+        egz = other.egz;
+        vid = other.vid;
+        med = other.med;
+        rez = other.rez;
+    }
+
 
     void setEgzFromLastNd() {
         if (!nd.empty()) {
