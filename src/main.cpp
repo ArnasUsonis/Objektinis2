@@ -11,10 +11,12 @@ int main() {
     srand(time(0)); // padeda taisyklingai ivykdyti random funkcija
 
     while(true){
+        cout << endl;
         cout <<"norite generuoti faila?(spauskite 1)" <<endl;
         cout <<"norite nuskaityti faila?(spauskite 2)" <<endl;
         cout <<"norite baigti?(spauskite 3)"<<endl;
         cout <<"norite parasyti ranka?(spauskite 4)"<<endl;
+        cout <<"norite pamatyti demonstracija?(spauskite 5)"<<endl;
         cin >> a;
         if (a == 1){
             cout << "kiek studentu faila norite sugeneruoti?";
@@ -58,7 +60,7 @@ int main() {
                 vidurkis(temp);
                 mediana(temp);
                 vec1.push_back(temp);
-                val(temp);
+                //val(temp);
             }
 
 
@@ -94,6 +96,10 @@ int main() {
                     break;
                     }
         }
+        return 0;
+     }else if (a == 5){
+         //ismes error (cannot declare variable 'zm' to be of abstract type 'zmogus' because the following virtual functions are pure within 'zmogus': 'virtual void zmogus::skaiciuotiAmziu()')
+         //zmogus temp;
      }
     }
 
