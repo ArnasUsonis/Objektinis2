@@ -60,7 +60,7 @@ int main() {
                 vidurkis(temp);
                 mediana(temp);
                 vec1.push_back(temp);
-                val(temp);
+                //val(temp);
             }
 
 
@@ -96,8 +96,10 @@ int main() {
                     break;
                     }
         }
+        return 0;
      }else if (a == 5){
-         zmogus zm;
+         //ismes error (cannot declare variable 'zm' to be of abstract type 'zmogus' because the following virtual functions are pure within 'zmogus': 'virtual void zmogus::skaiciuotiAmziu()')
+         //zmogus temp;
      }
     }
 

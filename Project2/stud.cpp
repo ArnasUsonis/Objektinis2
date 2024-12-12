@@ -83,9 +83,9 @@ void outputfile(stud lok)
 {
     cout << lok << setw(10) << right << fixed << setprecision(2) << lok.getMed() << endl;
 }
-void val(stud& student) {
-    student.clearData();
-}
+//void val(stud& student) {
+//    student.clearData();
+//}
 
 void val(vector<stud>& vec) {
     vec.clear();

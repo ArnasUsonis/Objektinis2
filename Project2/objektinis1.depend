@@ -59,7 +59,7 @@
 	"stud.h"
 	"lib.h"
 
-1734007906 c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\stud.h
+1734011060 c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\stud.h
 	"lib.h"
 
 1731071813 c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\lib.h
@@ -76,7 +76,7 @@
 	<chrono>
 	<list>
 
-1734005800 source:c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\main.cpp
+1734011413 source:c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\main.cpp
 	"lib.h"
 	"stud.h"
 
@@ -84,7 +84,7 @@
 	"stud.h"
 	"lib.h"
 
-1734004850 source:c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\stud.cpp
+1734011060 source:c:\users\lordofgames\desktop\objektinis2\objektinis1\project2\stud.cpp
 	"stud.h"
 	"lib.h"
 

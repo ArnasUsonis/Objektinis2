@@ -11,8 +11,8 @@ class zmogus {
 		void setVardas(string vardas) { this->vardas = vardas; };
 		void setPavarde(string pavarde) { this->pavarde = pavarde; };
 
-		zmogus() { cout << "Zmogus sukurtas" << endl; }
-        virtual ~zmogus() { cout << "Zmogus istrintas" << endl; }
+		zmogus() {} //cout << "Zmogus sukurtas" << endl; kad pamatyti kurima zmogaus
+        virtual ~zmogus() {}
 
         virtual void skaiciuotiAmziu() = 0;
 };
@@ -90,15 +90,15 @@ class stud : public zmogus{
         return in;
     }
 
-    void clearData() {
-        vardas.clear();
-        pavarde.clear();
-        nd.clear();
-        egz = 0.0;
-        vid = 0.0;
-        med = 0.0;
-        rez = 0.0;
-    }
+   // void clearData() {
+   //     vardas.clear();
+   //     pavarde.clear();
+   //     nd.clear();
+   //     egz = 0.0;
+   //     vid = 0.0;
+   //     med = 0.0;
+   //     rez = 0.0;
+   // }
 
 
   friend std::ostream& operator<<(std::ostream& out, const stud& student) {
