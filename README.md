@@ -1,5 +1,8 @@
 # Objektinis1
 Projektas objektinio v0.1
+# v2.0
+sukurta doxygen dokumentacija(latex ir html) 
+
 # v1.5
 Klase zmogus:
 
