@@ -1,6 +1,33 @@
 # Objektinis1
 Projektas objektinio v0.1
 
+# v1.2
+## Aprasymas:
+Igyvendinta rule of three, isvesties ir ivesties operatoriai.
+## destruktorius:
+![image](https://github.com/user-attachments/assets/a4451a40-bd3f-4c26-a5d8-435c993e6914)
+## kopijavimo operatorius:
+Kopijavimo operatorius suveikia tada, kai jau egzistuojantis objektas priskiria kito objekto reiksmes. Objektas, kuris yra kairiajame lygybes zenklo (=) kraste, perima desiniajame kraste esancio objekto atributu reiksmes. Parametras Stud a yra const ir perduodamas kaip nuoroda (reference type). Taip daroma, kad parametras butu tik skaitomas ir nereiketu kurti nereikalingu kopiju, taupant atminties resursus.
+![image](https://github.com/user-attachments/assets/a1f81cc1-dff1-458d-af35-643508db1a7b)
+## kopijavimo konstruktorius:
+Kopijavimo konstruktorius yra iskvieciamas, kai naujai sukuriamas objektas igyja jau egzistuojancio objekto reiksmes.
+![image](https://github.com/user-attachments/assets/c5a1798c-10cf-4a7b-a857-d004756eaeef)
+## << operatorius:
+![image](https://github.com/user-attachments/assets/bb1616e4-d3a7-4f6c-a24e-56aeb22c122e)
+
+padeda sutaupyti kodo eilutes:
+
+![image](https://github.com/user-attachments/assets/fcbb9047-16f6-4719-b3ae-20fa4b67d139) ![image](https://github.com/user-attachments/assets/d3e9c02e-9c1d-4dc5-992d-149c568b2bde)
+
+
+## >> operatorius:
+![image](https://github.com/user-attachments/assets/2aa74e65-a3a6-4fc3-b6c5-4cf7cdec078b)
+
+padeda sutaupyti kodo eilutes:
+
+![image](https://github.com/user-attachments/assets/3a58c78c-98f0-45da-8772-673410d24dc4) ![image](https://github.com/user-attachments/assets/d54ebf6f-3133-4d49-bc91-1775e0bf515a)
+
+
 # Spartos analize (v0.3)
 ## Vector:
 
