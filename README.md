@@ -1,5 +1,10 @@
 # Objektinis1
 Projektas objektinio v0.1
+# v3.0
+Pridetas InstallSetup failas kuris pades vartotojui patogiai atsisiusti ir naudotis programa.
+## Naudojimosi instrukcija(v3.0):
+atsidarykite Setup aplanka ir paspauskite ant InstallSetup. Atsisiuntus turetu atsirasti start meniu ir darbalaukyje shortcut failas.
+
 # v2.0
 sukurta doxygen dokumentacija(latex ir html) 
 
