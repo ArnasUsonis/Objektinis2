@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['pasirinkti_0',['pasirinkti',['../include_2stud_8h.html#a8f6f3a92aadd847724f083cb8fb2373d',1,'pasirinkti(int &amp;pasirinkimas):&#160;listui.cpp'],['../_project2_2listui_8cpp.html#a8f6f3a92aadd847724f083cb8fb2373d',1,'pasirinkti(int &amp;pasirinkimas):&#160;listui.cpp'],['../_project2_2stud_8h.html#a8f6f3a92aadd847724f083cb8fb2373d',1,'pasirinkti(int &amp;pasirinkimas):&#160;listui.cpp'],['../src_2listui_8cpp.html#a8f6f3a92aadd847724f083cb8fb2373d',1,'pasirinkti(int &amp;pasirinkimas):&#160;listui.cpp']]],
-  ['pasirinktikont_1',['pasirinktikont',['../include_2stud_8h.html#a22e152297fcccc66a25fded27c8f1749',1,'pasirinktikont(int &amp;kont):&#160;listui.cpp'],['../_project2_2listui_8cpp.html#a22e152297fcccc66a25fded27c8f1749',1,'pasirinktikont(int &amp;kont):&#160;listui.cpp'],['../_project2_2stud_8h.html#a22e152297fcccc66a25fded27c8f1749',1,'pasirinktikont(int &amp;kont):&#160;listui.cpp'],['../src_2listui_8cpp.html#a22e152297fcccc66a25fded27c8f1749',1,'pasirinktikont(int &amp;kont):&#160;listui.cpp']]]
-];
